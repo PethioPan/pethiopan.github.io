@@ -1,0 +1,12 @@
+# Crawling is allowed on purpose while the site is staged.
+#
+# Hiding the site is done with noindex (the X-Robots-Tag header in .htaccess
+# and the <meta name="robots"> tag in index.html), not with Disallow. A crawler
+# has to fetch a page to see that it says noindex — Disallow would stop the
+# fetch, and Google can still list a disallowed URL it never read. Allow the
+# crawl, and the noindex is what it finds.
+#
+# Nothing here changes when the site goes public.
+
+User-agent: *
+Allow: /

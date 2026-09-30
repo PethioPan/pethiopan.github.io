@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- STAGING: remove this tag and the noindex block in site/.htaccess to go public. See README.md. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Nahom Asrat Begashaw — full-stack engineer in Addis Ababa. Eight applications in production: multi-tenant SaaS, payment-gateway integration, loyalty platform, e-commerce.">
+<title>Nahom Asrat — Ships and Keeps It Up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap">
+
+<style>
+  :root {
+    --ground: #E9E8E4;
+    --panel: #F4F3F0;
+    --ink: #16181A;
+    --ink-soft: #4C5157;
+    --ink-faint: #7C8288;
+    --rule: #CFCEC8;
+    --rule-soft: #DEDCD6;
+    --cherry: #A62B1D;
+    --cherry-soft: #EEDDD9;
+    --live: #2C6047;
+    --live-soft: #DDE6E0;
+
+    --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --f-body: "Source Serif 4", Georgia, serif;
+    --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+    --measure: 64ch;
+    --wide: 64rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #121315;
+      --panel: #191B1D;
+      --ink: #EDEBE7;
+      --ink-soft: #A9AEB3;
+      --ink-faint: #767C82;
+      --rule: #2B2E31;
+      --rule-soft: #212426;
+      --cherry: #E4796A;
+      --cherry-soft: #2E1B18;
+      --live: #7DBB9E;
+      --live-soft: #17251F;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #121315;
+    --panel: #191B1D;
+    --ink: #EDEBE7;
+    --ink-soft: #A9AEB3;
+    --ink-faint: #767C82;
+    --rule: #2B2E31;
+    --rule-soft: #212426;
+    --cherry: #E4796A;
+    --cherry-soft: #2E1B18;
+    --live: #7DBB9E;
+    --live-soft: #17251F;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 1.0625rem;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: var(--wide);
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+  }
+
+  /* ---------- shared ---------- */
+
+  .label {
+    font-family: var(--f-mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  h2 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  p { margin: 0; }
+  .measure { max-width: var(--measure); }
+
+  section {
+    padding: 3.25rem 0;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .sec-top { display: flex; flex-direction: column; gap: 0.7rem; }
+
+  /* ---------- hero ---------- */
+
+  header.hero {
+    padding: 5rem 0 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .avail {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    align-self: flex-start;
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--live);
+    background: var(--live-soft);
+    padding: 0.35rem 0.65rem;
+  }
+  .dot {
+    width: 0.45rem; height: 0.45rem;
+    background: var(--live);
+    border-radius: 50%;
+    flex: none;
+  }
+
+  h1 {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 8vw, 4.75rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    margin: 0;
+    max-width: 18ch;
+    text-wrap: balance;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--cherry);
+  }
+
+  .hero-sub {
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    max-width: var(--measure);
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--ink);
+    font-family: var(--f-mono);
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+  }
+  .hero-meta strong { font-weight: 500; color: var(--ink-soft); }
+
+  /* ---------- thesis ---------- */
+
+  .thesis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .fact {
+    background: var(--panel);
+    padding: 1.35rem 1.3rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .fact b {
+    font-family: var(--f-display);
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.035em;
+    font-variant-numeric: tabular-nums;
+  }
+  .fact span {
+    font-family: var(--f-mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    line-height: 1.45;
+  }
+
+  /* ---------- work ---------- */
+
+  .work { display: flex; flex-direction: column; gap: 0; }
+
+  article {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  article:first-of-type { border-top: 1px solid var(--rule); }
+
+  @media (min-width: 52rem) {
+    article {
+      grid-template-columns: 15rem minmax(0, 1fr);
+      gap: 2.5rem;
+    }
+  }
+
+  .proj-side { display: flex; flex-direction: column; gap: 0.7rem; }
+
+  .proj-name {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+
+  .chip {
+    display: inline-block;
+    align-self: flex-start;
+    font-family: var(--f-mono);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 0.22rem 0.5rem;
+    color: var(--live);
+    background: var(--live-soft);
+  }
+  .chip.pilot { color: var(--cherry); background: var(--cherry-soft); }
+
+  .evidence {
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+    line-height: 1.7;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .proj-body { display: flex; flex-direction: column; gap: 0.9rem; }
+  .proj-body p { max-width: var(--measure); color: var(--ink-soft); }
+  .proj-body p.lead { color: var(--ink); }
+
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .stack span {
+    font-family: var(--f-mono);
+    font-size: 0.68rem;
+    color: var(--ink-soft);
+    border: 1px solid var(--rule);
+    padding: 0.2rem 0.45rem;
+    white-space: nowrap;
+  }
+
+  /* ---------- ops ---------- */
+
+  .ops-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .op {
+    background: var(--panel);
+    padding: 1.1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .op h3 {
+    font-family: var(--f-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  .op p { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5; }
+
+  /* ---------- skills ---------- */
+
+  dl.skills {
+    margin: 0;
+    display: grid;
+    gap: 0;
+  }
+  dl.skills > div {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.3rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  @media (min-width: 44rem) {
+    dl.skills > div { grid-template-columns: 11rem minmax(0, 1fr); gap: 2rem; align-items: baseline; }
+  }
+  dl.skills dt {
+    font-family: var(--f-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  dl.skills dd {
+    margin: 0;
+    font-family: var(--f-display);
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  /* ---------- contact ---------- */
+
+  .contact { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact h2 { font-size: clamp(1.8rem, 5vw, 2.75rem); letter-spacing: -0.03em; }
+
+  .links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .links a {
+    font-family: var(--f-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    padding: 0.6rem 1rem;
+    transition: background 120ms ease, color 120ms ease;
+  }
+  .links a:hover { background: var(--ink); color: var(--ground); }
+  .links a:focus-visible { outline: 2px solid var(--cherry); outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  footer {
+    padding-top: 2.5rem;
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 40rem) {
+    .wrap { padding: 0 1.1rem 4rem; }
+    header.hero { padding: 3.5rem 0 2.5rem; }
+    section { padding: 2.5rem 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="avail"><span class="dot"></span>Open to remote roles</span>
+    <h1>I ship products, then <em>keep them running</em>.</h1>
+    <p class="hero-sub">Full-stack engineer in Addis Ababa. Eight applications in production across two companies — a multi-tenant SaaS with paying customers, a payment-gateway integration built without an aggregator, a loyalty platform, an e-commerce storefront — all designed, built, deployed, and supported by one person. Me.</p>
+    <div class="hero-meta">
+      <span><strong>Nahom Asrat Begashaw</strong></span>
+      <span>Addis Ababa · UTC+3</span>
+      <span>Full EU overlap · 4h+ US Eastern</span>
+      <span>TypeScript · React · Next.js · Postgres</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-top">
+      <p class="label">The short version</p>
+      <h2>Most engineers hand a product to an ops team. I am also the ops team.</h2>
+    </div>
+    <p class="measure">That changes how I build. When you are the one who gets called at closing time because the café's menu will not load, or because the counter cannot print a receipt, you stop shipping things that need babysitting. Everything below was built under that constraint, alongside running the ERP, network, servers, and point-of-sale for three branches and over a hundred staff.</p>
+    <p class="measure">Solo ownership is what I do now, not all I have done. Two and a half years of it were remote at ShipShap, building React and React Native features for a shipping platform with product and design spread across time zones; four more were spent co-running MBAN Developers, a four-person collective delivering client work.</p>
+    <div class="thesis">
+      <div class="fact"><b>8</b><span>Applications in production</span></div>
+      <div class="fact"><b>100</b><span>PageSpeed, desktop and mobile, up from ~45</span></div>
+      <div class="fact"><b>83</b><span>Tests on the payment client, all offline</span></div>
+      <div class="fact"><b>1</b><span>Engineer behind all of it</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-top">
+      <p class="label">Selected work</p>
+      <h2>Six of the eight</h2>
+    </div>
+    <div class="work">
+
+      <article>
+        <div class="proj-side">
+          <p class="proj-name">Menu Platform</p>
+          <span class="chip">Live · paying customer</span>
+          <p class="evidence">97 commits<br>2026 – present</p>
+        </div>
+        <div class="proj-body">
+          <p class="lead">A tenant-isolated SaaS that lets a café run its own menu without calling anyone.</p>
+          <p>Drag-to-reorder editing, categories, image upload with optimization, featured and expandable items, brand-color theming per tenant, feature toggles per tenant, static export for speed, and a super-admin panel showing the health of every tenant at once. A weekly digest email goes out to each café. It started as one restaurant's menu and was rebuilt into a product; the first customer paid for it.</p>
+          <div class="stack"><span>Next.js 16</span><span>React 19</span><span>TypeScript</span><span>Supabase</span><span>Postgres + RLS</span><span>Tailwind v4</span><span>Playwright</span></div>
+        </div>
+      </article>
+
+      <article>
+        <div class="proj-side">
+          <p class="proj-name">Loyalty Platform</p>
+          <span class="chip">Live</span>
+          <p class="evidence">30 commits<br>2026 – present</p>
+        </div>
+        <div class="proj-body">
+          <p class="lead">Two installable apps on one backend: a punch card for customers, a counter tool for staff.</p>
+          <p>Customers sign in with a typed email code or Google — a real auth account, not a phone number in a spreadsheet — and get a card per promotion, reward history, a referral flow that credits both people, an annual birthday cup, and subscription vouchers. Staff get member lookup, stamp issuing with double-stamp days, redemption, and NFC tap approval; super-admins configure the programs and the staff accounts. Numbered migrations, an Edge Function for admin provisioning, Playwright specs.</p>
+          <div class="stack"><span>PWA</span><span>Supabase Auth</span><span>Postgres</span><span>Edge Functions</span><span>NFC</span><span>Playwright</span></div>
+        </div>
+      </article>
+
+      <article>
+        <div class="proj-side">
+          <p class="proj-name">telebirr Integration</p>
+          <span class="chip">Complete</span>
+          <p class="evidence">83 tests, no network<br>Zero runtime deps</p>
+        </div>
+        <div class="proj-body">
+          <p class="lead">A direct client for Ethio Telecom's payment gateway, so an Ethiopian site can take money without paying an aggregator per transaction.</p>
+          <p>Every local option routes through a middleman that takes a cut of each sale. This talks to the Fabric gateway itself: RSA request signing, token lifecycle, and a diagnostic command that walks TLS, then token, then signature so a failing integration tells you which layer broke. A mock gateway mode runs the entire checkout end to end without live credentials, which matters in a market where credentials take months.</p>
+          <div class="stack"><span>TypeScript</span><span>npm workspaces</span><span>RSA signing</span><span>Next.js sandbox</span></div>
+        </div>
+      </article>
+
+      <article>
+        <div class="proj-side">
+          <p class="proj-name">renaissancestones.com</p>
+          <span class="chip">Live</span>
+          <p class="evidence">125 commits<br>2024 – present</p>
+        </div>
+        <div class="proj-body">
+          <p class="lead">A manufacturing company's site rebuilt from roughly 45 PageSpeed to 100, on both desktop and mobile.</p>
+          <p>Redesigned throughout, broken forms and links repaired, mosaic product gallery, analytics with custom dashboards. The part that keeps it fast is the tooling underneath: catalog validation, an image optimization stage, QR link generation, and a repository audit, all wired into one command that runs before anything is allowed to ship — so non-technical staff can add products without quietly undoing the performance work.</p>
+          <div class="stack"><span>Astro</span><span>Node tooling</span><span>Sharp pipeline</span><span>PostHog</span><span>Git hooks</span></div>
+        </div>
+      </article>
+
+      <article>
+        <div class="proj-side">
+          <p class="proj-name">PaperTrail</p>
+          <span class="chip pilot">In pilot</span>
+          <p class="evidence">23 commits<br>2026 – present</p>
+        </div>
+        <div class="proj-body">
+          <p class="lead">Order tracking for a commodities trading firm, currently running the customer's real orders.</p>
+          <p>Built to a single acceptance test agreed with the buyer: one order goes end to end through the system. Everything else was cut until that worked.</p>
+          <div class="stack"><span>Next.js</span><span>Drizzle ORM</span><span>PostgreSQL</span><span>Docker</span></div>
+        </div>
+      </article>
+
+      <article>
+        <div class="proj-side">
+          <p class="proj-name">Shopify Storefront &amp; Extensions</p>
+          <span class="chip">Live</span>
+          <p class="evidence">96 commits<br>2026 – present</p>
+        </div>
+        <div class="proj-body">
+          <p class="lead">A custom coffee storefront theme, plus customer-account extensions with no backend behind them.</p>
+          <p>The theme is maintained against Shopify's release cadence rather than forked and abandoned. The account extensions use App Bridge and Direct API access to call the Admin API straight from the browser, which removes a server, a deployment, and a class of secrets from the picture entirely.</p>
+          <div class="stack"><span>Liquid</span><span>Preact</span><span>App Bridge</span><span>Admin API</span><span>Vite</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-top">
+      <p class="label">The other half</p>
+      <h2>What runs underneath, and who runs it</h2>
+    </div>
+    <p class="measure">Alongside the software, I hold uptime for the systems two companies operate on. It is not what I want to be hired for, but it is why I build the way I do.</p>
+    <div class="ops-grid">
+      <div class="op"><h3>ERP &amp; servers</h3><p>Administration, access control, and the migration of hosting from international servers to local infrastructure — cutting recurring foreign-currency cost.</p></div>
+      <div class="op"><h3>Networks across 3 branches</h3><p>Routers, VPN, segmentation, and being the person who decides whether an outage is ours or the carrier's, then chases the carrier.</p></div>
+      <div class="op"><h3>Point of sale</h3><p>Registers and receipt printing at two customer-facing sites. When this breaks, the business stops taking money.</p></div>
+      <div class="op"><h3>Identity &amp; devices</h3><p>Accounts created on hire and revoked on exit, every device that touches company data, and the security training that reduces the tickets.</p></div>
+      <div class="op"><h3>Attendance &amp; payroll data</h3><p>The clocking system and its monthly reports, corrected before payroll runs on them.</p></div>
+      <div class="op"><h3>Process &amp; documentation</h3><p>IT policy and SOPs written to ISO 9001:2015, with ISO 19011 auditing certification behind them.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-top">
+      <p class="label">Stack</p>
+      <h2>What I reach for</h2>
+    </div>
+    <dl class="skills">
+      <div><dt>Languages</dt><dd>TypeScript, JavaScript, SQL, HTML, CSS</dd></div>
+      <div><dt>Frontend</dt><dd>React 19, Next.js 16 App Router, Astro, React Native, Tailwind CSS v4, installable PWAs</dd></div>
+      <div><dt>Backend &amp; data</dt><dd>Node.js, PostgreSQL, Supabase — Auth, Row Level Security, Storage, Edge Functions — Drizzle ORM, Strapi</dd></div>
+      <div><dt>Commerce</dt><dd>Shopify Liquid themes, App Bridge and Admin API extensions, direct payment-gateway integration</dd></div>
+      <div><dt>Quality</dt><dd>Playwright, unit tests, ESLint, Prettier, pre-commit hooks, one-command baseline checks</dd></div>
+      <div><dt>Infrastructure</dt><dd>Linux, Docker, Vercel, networking and VPN, Windows Server, remote access, on-premises hardware</dd></div>
+      <div><dt>Also</dt><dd>Git, PostHog, FFmpeg pipelines, AI-assisted development tooling, English and Amharic bilingual, working French</dd></div>
+    </dl>
+  </section>
+
+  <section class="contact">
+    <p class="label">Contact</p>
+    <h2>Hiring remotely? I have already been doing the job alone.</h2>
+    <p class="measure">Available for full-time remote roles and contract work. Comfortable owning a product area end to end, or joining a team and being the person who finishes things.</p>
+    <div class="links">
+      <a href="mailto:nahomcookies@gmail.com">nahomcookies@gmail.com</a>
+      <a href="https://github.com/PethioPan">github.com/PethioPan</a>
+      <a href="https://www.linkedin.com/in/nahomasrat/">LinkedIn</a>
+      <a href="/Nahom-Asrat-CV.pdf">Download CV</a>
+    </div>
+  </section>
+
+  <footer>
+    Built as a static page — no framework, no tracking, no cookie banner. Commit counts are from version-control history and are a record of work, not a measure of it.
+  </footer>
+
+</div>
+</body>
+</html>
